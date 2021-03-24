@@ -1,0 +1,5 @@
+config
+bitcoin.csv
+coin_client.py
+.ipynb_checkpoints/
+__pycache__/
