@@ -4,10 +4,11 @@
 class Technicals():
     """Create attributes based on technical analysis."""
 
-    def __init__(self, df):
+    def __init__(self, df, trigger=40):
         """Price and sma50 attributes."""
         self.price = df['close'][-1]
         self.fifty = df['sma_50'][-1]
+        self.trigger = float(trigger)
 
     @property
     def percent_over_fifty(self):
@@ -16,8 +17,9 @@ class Technicals():
 
     @property
     def sell(self):
-        return self.percent_over_fifty >= 40
+        return self.percent_over_fifty >= self.trigger
 
+    @property
     def buy(self):
         return self.price <= self.fifty
 
@@ -25,7 +27,7 @@ class Technicals():
         """String Representation"""
         if self.sell:
             return "Its time to Sell."
-        elif self.buy:
+        if self.buy:
             return "It's time to Buy."
         else:
             return "Patience Pays."
