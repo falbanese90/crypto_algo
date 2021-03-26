@@ -9,6 +9,7 @@ def Buy():
     balance = float(client.get_account(btc_id)['native_balance']['amount'])
     amount = round((.1 * balance), 2)
     client.buy(btc_id, amount, currency='USD')
+    print(f"Buy order executed in the amount of ${amount}.")
 
 
 def Sell():
@@ -16,4 +17,5 @@ def Sell():
     client = Client(coin_api, coin_secret)
     balance = float(client.get_account(btc_id)['native_balance']['amount'])
     amount = round((.1 * balance), 2)
-    client.buy(btc_id, amount, currency='USD')
+    client.sell(btc_id, amount, currency='USD')
+    print(f"Sell order executed in the amount of ${amount}.")

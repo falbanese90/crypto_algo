@@ -25,9 +25,4 @@ class Technicals():
 
     def __str__(self):
         """String Representation"""
-        if self.sell:
-            return "Its time to Sell."
-        if self.buy:
-            return "It's time to Buy."
-        else:
-            return "Patience Pays."
+        return f'Price:{self.price}, 50-Day:{self.fifty}'

@@ -14,8 +14,7 @@ def algo_loop():
         btc = Technicals(btc, trigger)
         if btc.sell:
             """Sell()"""
-            print("Sell!")
-            trigger *= .2
+            trigger += (.2 * trigger)
             print(f'Trigger is now {trigger}%')
             time.sleep(86400)
         elif btc.buy:
@@ -25,7 +24,7 @@ def algo_loop():
             time.sleep(86400)
         else:
             print("Waiting..")
-            time.sleep(10800)
+            time.sleep(7200)
 
 
 if __name__ == '__main__':
