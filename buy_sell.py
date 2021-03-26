@@ -6,8 +6,10 @@ client = Client(coin_api, coin_secret)
 
 def Buy(amount):
     """Buy Bitcoin a specified Dollar amount."""
+    client = Client(coin_api, coin_secret)
     client.buy(btc_id, amount=amount, currency='USD')
 
 def Sell(amount):
     """Sell Bitcoin a specified Dollar amount."""
+    client = Client(coin_api, coin_secret)
     client.buy(btc_id, amount=amount, currency='USD')
