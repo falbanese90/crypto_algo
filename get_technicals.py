@@ -1,11 +1,12 @@
 """Retrieves Technical analysis and creates Class."""
 
+
 class Technicals():
     """Create attributes based on technical analysis."""
 
     def __init__(self, df):
         """Price and sma50 attributes."""
-        self.price = df['open'][-1]
+        self.price = df['close'][-1]
         self.fifty = df['sma_50'][-1]
 
     @property
@@ -15,9 +16,16 @@ class Technicals():
 
     @property
     def sell(self):
-        return self.percent_over_fifty > 40
+        return self.percent_over_fifty >= 40
+
+    def buy(self):
+        return self.price <= self.fifty
 
     def __str__(self):
         """String Representation"""
-        return (f'Price: {self.price}, 50-Day: {self.fifty}'
-                f', Percent Over: {self.percent_over_fifty}')
+        if self.sell:
+            return "Its time to Sell."
+        elif self.buy:
+            return "It's time to Buy."
+        else:
+            return "Patience Pays."

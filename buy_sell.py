@@ -2,14 +2,18 @@
 from coinbase.wallet.client import Client
 from config.config import coin_api, coin_secret, btc_id, eth_id
 
-client = Client(coin_api, coin_secret)
 
-def Buy(amount):
+def Buy():
     """Buy Bitcoin a specified Dollar amount."""
     client = Client(coin_api, coin_secret)
-    client.buy(btc_id, amount=amount, currency='USD')
+    balance = float(client.get_account(btc_id)['native_balance']['amount'])
+    amount = round((.1 * balance), 2)
+    client.buy(btc_id, amount, currency='USD')
 
-def Sell(amount):
+
+def Sell():
     """Sell Bitcoin a specified Dollar amount."""
     client = Client(coin_api, coin_secret)
-    client.buy(btc_id, amount=amount, currency='USD')
+    balance = float(client.get_account(btc_id)['native_balance']['amount'])
+    amount = round((.1 * balance), 2)
+    client.buy(btc_id, amount, currency='USD')
