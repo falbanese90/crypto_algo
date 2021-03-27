@@ -13,13 +13,12 @@ def algo_loop():
         btc = year_to_date()
         btc = Technicals(btc, trigger)
         if btc.sell:
-            """Sell()"""
+            Sell()
             trigger += (.2 * trigger)
             print(f'Trigger is now {trigger}%')
             time.sleep(86400)
         elif btc.buy:
-            """Buy()"""
-            print("Buy!")
+            Buy()
             x += 1
             time.sleep(86400)
         else:
